@@ -10,12 +10,10 @@ interface Post {
   author: string | undefined;
   location: string | undefined;
   excerpt: string | undefined;
+  tags: string[];
 }
 
-declare const data: Post[];
-export { data };
-
-export default createContentLoader("src/posts/*.md", {
+export default createContentLoader("posts/*.md", {
   excerpt: true,
   transform(raw): Post[] {
     return raw
@@ -26,6 +24,7 @@ export default createContentLoader("src/posts/*.md", {
         date: formatDate(frontmatter.date),
         author: frontmatter.author || "",
         location: frontmatter.location || "",
+        tags: frontmatter.tags || [],
       }))
       .sort((a, b) => b.date.time - a.date.time);
   },

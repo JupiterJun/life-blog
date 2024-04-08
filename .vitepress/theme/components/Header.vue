@@ -62,7 +62,6 @@
 import { ref, onMounted, onUnmounted, defineComponent } from "vue";
 import { useRouter, useData } from "vitepress";
 const { site, page, frontmatter } = useData();
-console.log(site);
 
 const { go } = useRouter();
 const top = ref(true);

@@ -8,11 +8,12 @@ export default defineConfig({
   lang: "zh-CN",
   lastUpdated: true,
   srcDir:'./src',
-  outDir: "/dist",
-  cleanUrls: true,
+  outDir: "dist",
+  cleanUrls: false,
   ignoreDeadLinks: true,
   srcExclude: ["README.md"], // exclude the README.md , needn't to compiler
   themeConfig: {
+    maxCountPerPage: 5,
     lastUpdatedText: "上次更新",
     // posts: await getPosts(),
     // pageSize: pageSize,
