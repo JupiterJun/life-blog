@@ -4,7 +4,7 @@ import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
-  lang: 'en-US',
+  lang: 'zh-CN',
 
   title: 'VuePress',
   description: 'My first VuePress Site',
@@ -13,21 +13,21 @@ export default defineUserConfig({
     logo: 'https://vuejs.press/images/hero.png',
 
     navbar: [
-      '/',
+      // '/',
       {
-        text: 'Article',
+        text: '文章',
         link: '/article/',
       },
+      // {
+      //   text: '分类',
+      //   link: '/category/',
+      // },
       {
-        text: 'Category',
-        link: '/category/',
-      },
-      {
-        text: 'Tag',
+        text: '标签',
         link: '/tag/',
       },
       {
-        text: 'Timeline',
+        text: '时间线',
         link: '/timeline/',
       },
     ],
@@ -60,20 +60,20 @@ export default defineUserConfig({
         typeof frontmatter.excerpt !== 'string',
 
       category: [
-        {
-          key: 'category',
-          getter: (page) => page.frontmatter.category || [],
-          layout: 'Category',
-          itemLayout: 'Category',
-          frontmatter: () => ({
-            title: 'Categories',
-            sidebar: false,
-          }),
-          itemFrontmatter: (name) => ({
-            title: `Category ${name}`,
-            sidebar: false,
-          }),
-        },
+        // {
+        //   key: 'category',
+        //   getter: (page) => page.frontmatter.category || [],
+        //   layout: 'Category',
+        //   itemLayout: 'Category',
+        //   frontmatter: () => ({
+        //     title: 'Categories',
+        //     sidebar: false,
+        //   }),
+        //   itemFrontmatter: (name) => ({
+        //     title: `Category ${name}`,
+        //     sidebar: false,
+        //   }),
+        // },
         {
           key: 'tag',
           getter: (page) => page.frontmatter.tag || [],

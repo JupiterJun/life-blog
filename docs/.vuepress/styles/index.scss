@@ -1,0 +1,69 @@
+@import 'https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,500,700.css';
+:root {
+  // font vars
+  --font-family: 'Noto Serif SC', serif;
+  --font-family-code: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+:root {
+  // brand colors
+  --c-brand: hsl(47, 21%, 48%);
+  --c-brand-light: hsl(47, 26%, 57%);
+
+  // background colors
+  --c-bg: #ffffff;
+  --c-bg-light: hsl(46, 9%, 96%);
+  --c-bg-lighter: #eeeeee;
+  --c-bg-dark: #ebebec;
+  --c-bg-darker: #e6e6e6;
+  --c-bg-navbar: var(--c-bg);
+  --c-bg-sidebar: var(--c-bg);
+  --c-bg-arrow: #cccccc;
+
+  // text colors
+  --c-text: hsl(47, 6%, 25%);
+  --c-text-accent: var(--c-brand);
+  --c-text-light: hsl(47, 29%, 32%);
+  --c-text-lighter: hsl(46, 29%, 40%);
+  --c-text-lightest: hsl(46, 29%, 50%);
+  --c-text-quote: hsl(0, 0%, 60%);
+}
+html.dark {
+  // brand colors
+  --c-brand: hsl(47, 26%, 57%);
+  --c-brand-light: hwb(47 38% 42%);
+
+  // background colors
+  --c-bg: hsl(50, 15%, 10%);
+  --c-bg-light: hsl(50, 15%, 20%);
+  --c-bg-lighter: hsl(47, 16%, 18%);
+  --c-bg-dark: hsl(47, 13%, 24%);
+  --c-bg-darker: hsl(47, 16%, 26%);
+
+  // text colors
+  --c-text: hsl(47, 19%, 80%);
+  --c-text-light: hsl(46, 19%, 70%);
+  --c-text-lighter: hsl(46, 19%, 66%);
+  --c-text-lightest: hsl(47, 19%, 62%);
+
+  // border colors
+  --c-border: hsl(47, 18%, 30%);
+  --c-border-dark: hsl(47, 19%, 25%);
+}
+
+// navbar
+:root {
+  --navbar-height: 4.8rem;
+  --navbar-padding-v: 1.2rem;
+  --navbar-padding-h: 2rem;
+}
+.navbar {
+  border: none;
+  box-shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.1);
+  .site-name{
+    font-size: 30px;
+  }
+  .navbar-items-wrapper {
+    font-size: 20px;
+  }
+}
