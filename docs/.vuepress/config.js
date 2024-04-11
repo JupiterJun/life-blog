@@ -21,7 +21,6 @@ export default defineUserConfig({
 
     theme: defaultTheme({
         // logo: 'https://vuejs.press/images/hero.png',
-
         sidebar: 'auto',
         sidebarDepth: 1,
         navbar: [
@@ -43,6 +42,9 @@ export default defineUserConfig({
                 link: '/timeline/',
             },
         ],
+
+        lastUpdatedText: '最后更新',
+        contributorsText: '贡献者',
     }),
 
     plugins: [
