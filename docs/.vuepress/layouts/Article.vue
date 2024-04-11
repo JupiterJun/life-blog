@@ -1,6 +1,6 @@
 <script setup>
 import { useBlogType } from '@vuepress/plugin-blog/client'
-import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
+import ParentLayout from './Layout.vue'
 import ArticleList from '../components/ArticleList.vue'
 
 const articles = useBlogType('article')
@@ -10,7 +10,7 @@ const articles = useBlogType('article')
   <ParentLayout>
     <template #page>
       <main class="page">
-        <ArticleList :items="articles.items" />
+        <ArticleList :items="articles.items" style="margin-top: 4rem"/>
       </main>
     </template>
   </ParentLayout>

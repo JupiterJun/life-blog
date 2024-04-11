@@ -23,7 +23,7 @@ console.log(sidebarItems)
   <main class="page">
     <slot name="top"/>
 
-    <div class="theme-default-content font-noto-serif-sc">
+    <div class="theme-default-content">
       <h1>{{ data.title }}</h1>
 
       <div class="head-info">
@@ -78,6 +78,10 @@ console.log(sidebarItems)
     width: 100%;
   }
   padding: 0 0 2rem;
+}
+
+.theme-default-content{
+  font-family: var(--font-noto-serif-sc);;
 }
 
 .content-toc {

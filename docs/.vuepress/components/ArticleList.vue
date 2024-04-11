@@ -15,10 +15,10 @@ defineProps({
     <div v-if="!items.length">暂时还没有内容TT</div>
 
     <article
-      v-for="{ info, path } in items"
-      :key="path"
-      class="article"
-      @click="$router.push(path)"
+        v-for="({ info, path },i) in items"
+        :key="path"
+        class="article"
+        @click="$router.push(path)"
     >
       <header class="title">
         {{
@@ -27,23 +27,23 @@ defineProps({
         }}
       </header>
 
-      <hr />
-
       <div class="article-info">
         <span v-if="info.author" class="author">Author: {{ info.author }}</span>
 
         <span v-if="info.date && !isTimeline" class="date"
-          >发布日期: {{ new Date(info.date).toLocaleDateString() }}</span
+        >发布日期: {{ new Date(info.date).toLocaleDateString() }}</span
         >
 
         <span v-if="info.category.length" class="category"
-          >分类: {{ info.category.join(', ') }}</span
+        >分类: {{ info.category.join(', ') }}</span
         >
 
         <span v-if="info.tag.length" class="tag">标签: {{ info.tag.join(', ') }}</span>
       </div>
 
-      <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
+      <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt"/>
+
+      <hr v-if="i+1<items.length"/>
     </article>
   </div>
 </template>
@@ -62,10 +62,8 @@ defineProps({
   box-sizing: border-box;
 
   width: 100%;
-  margin: 0 auto 1.25rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--c-border);
-  border-radius: 0.4rem;
+  margin: 0 auto 0;
+  padding: 0 1.25rem;
   color: var(--c-text);
 
   text-align: start;
@@ -81,11 +79,15 @@ defineProps({
   .title {
     position: relative;
 
+    font-family: var(--font-noto-serif-sc);
+
     display: inline-block;
 
     font-size: 1.28rem;
     font-weight: 500;
     line-height: 2rem;
+
+    transition: color 0.2s ease-in-out;
 
     &::after {
       content: '';
@@ -95,7 +97,7 @@ defineProps({
       inset-inline-start: 0;
 
       width: 100%;
-      height: 2px;
+      height: 1.5px;
 
       background: var(--c-brand);
 
@@ -106,6 +108,8 @@ defineProps({
     }
 
     &:hover {
+      color: var(--c-text-accent);
+
       &::after {
         visibility: visible;
         transform: scaleX(1);
@@ -128,17 +132,42 @@ defineProps({
   }
 
   .excerpt {
+    font-family: var(--font-noto-serif-sc);
+    color: var(--c-text-quote);
+
     h1 {
       display: none;
     }
 
     h2 {
-      font-size: 1.2em;
+      font-size: 1.1em;
+      margin-top: 1em;
+      margin-bottom: 0.4em;
+      padding-bottom: 0;
+      border: none;
     }
 
     h3 {
-      font-size: 1.15em;
+      font-size: 1em;
+      margin-top: 1em;
+      margin-bottom: 0.4em;
     }
+
+    p{
+      font-size: 1em;
+      line-height: 1;
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+
+    a {
+      color: var(--c-text-quote);
+      border-bottom: 1px solid var(--c-text-quote);
+    }
+  }
+
+  hr{
+    margin: 2rem 0;
   }
 }
 </style>
