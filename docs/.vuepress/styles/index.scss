@@ -1,10 +1,11 @@
-@import 'https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,500,700.css';
-:root {
-  // font vars
-  --font-family: 'Noto Serif SC', serif;
-  --font-family-code: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+@import 'https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,500,600,700.css';
+
+// fonts
+.font-noto-serif-sc {
+  font-family: 'Noto Serif SC', serif;
 }
 
+// colors
 :root {
   // brand colors
   --c-brand: hsl(47, 21%, 48%);
@@ -54,16 +55,72 @@ html.dark {
 // navbar
 :root {
   --navbar-height: 4.8rem;
+  @media (max-width: 720px) {
+    --navbar-height: 4.2rem;
+
+  }
   --navbar-padding-v: 1.2rem;
+  @media (max-width: 720px) {
+    --navbar-padding-v: 0.9rem;
+  }
   --navbar-padding-h: 2rem;
 }
+
 .navbar {
   border: none;
-  box-shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.1);
-  .site-name{
-    font-size: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .03), 0 6px 6px rgba(0, 0, 0, .05);
+  font-family: 'Noto Serif SC', serif;
+
+  .site-name {
+    font-size: 2rem;
+    @media (max-width: 720px) {
+      font-size: 1.4rem;
+    }
+    font-weight: 600;
+    letter-spacing: 2px;
   }
+
   .navbar-items-wrapper {
     font-size: 20px;
+  }
+}
+
+.toggle-sidebar-button {
+  top: var(--navbar-padding-v);
+}
+
+// searchbar
+:root {
+  --search-input-width: 10rem !important;
+}
+
+.search-box {
+  display: flex !important;
+  height: 2.2rem;
+  align-self: center;
+
+  input {
+    height: 100% !important;
+    border-radius: 6px !important;
+    background-position: 0.65rem 50% !important;
+    background-size: 0.9rem !important;
+    padding-left: 2.1rem !important;
+  }
+
+  .suggestion {
+    .page-title {
+      font-size: medium;
+    }
+
+    .page-header {
+      font-size: 0.8em !important;
+    }
+  }
+}
+
+// sidebar
+@media (min-width: 720px) {
+  .sidebar {
+    display: none;
   }
 }
