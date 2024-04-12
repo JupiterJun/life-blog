@@ -10,12 +10,17 @@ const props = defineProps({
   },
   /** Whether is timeline or not */
   isTimeline: Boolean,
+  isMainList: Boolean,
+  noItemsText: {
+    type: String,
+    default: '暂时还没有内容TT'
+  }
 })
 </script>
 
 <template>
   <div class="article-wrapper">
-    <div v-if="!items.length">暂时还没有内容TT</div>
+    <div v-if="!items.length">{{props.noItemsText}}</div>
 
     <article
         v-for="({ info, path },i) in items"
@@ -30,7 +35,7 @@ const props = defineProps({
             info.title
           }}
         </header>
-        <Badge type="tip" text="置顶" vertical="middle" v-if="info.sticky"/>
+        <Badge type="tip" text="置顶" vertical="middle" v-if="info.sticky && isMainList"/>
       </div>
 
       <ArticleTagList :tags="info.tag" style="margin: 0.6rem 0"/>

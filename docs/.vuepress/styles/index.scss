@@ -80,8 +80,11 @@ html.dark {
     letter-spacing: 2px;
   }
 
-  .navbar-items-wrapper {
+  .navbar-items {
     font-size: 20px;
+    .route-link-active {
+      color: var(--c-brand);
+    }
   }
 }
 

@@ -1,11 +1,14 @@
 <script setup>
-import { useBlogCategory } from '@vuepress/plugin-blog/client'
+import {useBlogCategory} from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { RouteLink, useRoute } from 'vuepress/client'
+import {RouteLink, useRoute, usePageData} from 'vuepress/client'
 import ArticleList from '../components/ArticleList.vue'
 
 const route = useRoute()
 const tagMap = useBlogCategory('tag')
+const page = usePageData()
+// const current = Object.values(tagMap.value.map).find(obj => obj.path === decodeURIComponent(page.value.path))
+
 </script>
 
 <template>
@@ -14,11 +17,11 @@ const tagMap = useBlogCategory('tag')
       <main class="page">
         <div class="tag-wrapper">
           <RouteLink
-            v-for="({ items, path }, name) in tagMap.map"
-            :key="name"
-            :to="path"
-            :active="route.path === path"
-            class="tag"
+              v-for="({ items, path }, name) in tagMap.map"
+              :key="name"
+              :to="path"
+              :active="decodeURIComponent(route.path) === path"
+              class="tag"
           >
             {{ name }}
             <span class="tag-num">
@@ -27,7 +30,10 @@ const tagMap = useBlogCategory('tag')
           </RouteLink>
         </div>
 
-        <ArticleList :items="tagMap.currentItems ?? []" />
+        <ArticleList
+            :items="Object.values(tagMap.map).find(obj => obj.path === decodeURIComponent(page.path))?.items ?? []"
+            no-items-text="请选择一个标签"
+        />
       </main>
     </template>
   </ParentLayout>
@@ -38,6 +44,8 @@ const tagMap = useBlogCategory('tag')
 
 .tag-wrapper {
   @include mixins.content_wrapper;
+
+  margin-top: 2rem;
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;
@@ -58,11 +66,13 @@ const tagMap = useBlogCategory('tag')
     padding: 0.4rem 0.8rem;
     border-radius: 0.25rem;
 
+    border: var(--c-brand) 1px solid;
+    color: var(--c-brand);
+
     cursor: pointer;
 
-    transition:
-      background 0.3s,
-      color 0.3s;
+    transition: background 0.3s,
+    color 0.3s;
 
     @media (max-width: 419px) {
       font-size: 0.9rem;
