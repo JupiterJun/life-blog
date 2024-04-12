@@ -60,6 +60,8 @@ export default defineUserConfig({
                 date: frontmatter.date || null,
                 category: frontmatter.category || [],
                 tag: frontmatter.tag || [],
+                sticky: frontmatter.sticky || null,
+                location: frontmatter.location || null,
                 excerpt:
                 // Support manually set excerpt through frontmatter
                     typeof frontmatter.excerpt === 'string'

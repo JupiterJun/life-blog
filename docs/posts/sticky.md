@@ -4,8 +4,11 @@ category:
   - CategoryC
 tag:
   - tag E
+  - 置顶测试
+  - 标签
 sticky: true
 excerpt: <p>A sticky article demo.</p>
+location: 秦皇岛
 ---
 
 # Sticky Article

@@ -4,6 +4,8 @@ category:
   - CategoryC
 tag:
   - tag E
+  - 高优先级
+  - 置顶测试
 sticky: 10
 ---
 

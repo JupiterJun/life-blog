@@ -124,3 +124,12 @@ html.dark {
     display: none;
   }
 }
+
+// badage
+:root{
+  --c-badge-tip: var(--c-brand);
+  --c-badge-warning: #ecc808;
+  --c-badge-warning-text: var(--c-bg);
+  --c-badge-danger: #dc2626;
+  --c-badge-danger-text: var(--c-bg);
+}

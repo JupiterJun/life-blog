@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import {defineProps, withDefaults} from 'vue';
 
+const defaultAuthor = '纾浚';
+const defaultLocation = 'anywhere';
+
 const props = withDefaults(defineProps<{
   author?: string,
   location?: string,
   date?: string | Date
 }>(), {
-  author: '纾浚',
-  location: 'anywhere',
+  author: defaultAuthor,
+  location: defaultLocation,
   date: ''
 })
 </script>
@@ -19,7 +22,7 @@ const props = withDefaults(defineProps<{
            stroke-linecap="round" stroke-linejoin="round">
         <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
       </svg>
-      <span>{{ props.author }}&nbsp;in {{ props.location }}</span>
+      <span>{{ props.author || defaultAuthor }}&nbsp;in {{ props.location || defaultLocation }}</span>
     </div>
     <div v-if="props.date">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

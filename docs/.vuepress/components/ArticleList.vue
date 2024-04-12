@@ -1,5 +1,8 @@
 <script setup>
-defineProps({
+import ArticleInfoList from "./ArticleInfoList.vue";
+import ArticleTagList from "./ArticleTagList.vue";
+
+const props = defineProps({
   /** Article items */
   items: {
     type: Array,
@@ -20,28 +23,22 @@ defineProps({
         class="article"
         @click="$router.push(path)"
     >
-      <header class="title">
-        {{
-          (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
-          info.title
-        }}
-      </header>
-
-      <div class="article-info">
-        <span v-if="info.author" class="author">Author: {{ info.author }}</span>
-
-        <span v-if="info.date && !isTimeline" class="date"
-        >发布日期: {{ new Date(info.date).toLocaleDateString() }}</span
-        >
-
-        <span v-if="info.category.length" class="category"
-        >分类: {{ info.category.join(', ') }}</span
-        >
-
-        <span v-if="info.tag.length" class="tag">标签: {{ info.tag.join(', ') }}</span>
+      <div style="display: flex; align-items: center; gap: 0.4rem">
+        <header class="title">
+          {{
+            (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
+            info.title
+          }}
+        </header>
+        <Badge type="tip" text="置顶" vertical="middle" v-if="info.sticky"/>
       </div>
 
+      <ArticleTagList :tags="info.tag" style="margin: 0.6rem 0"/>
+
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt"/>
+
+      <ArticleInfoList :author="info.author" :location="info.location"
+                       :date="new Date(info.date).toLocaleDateString()"/>
 
       <hr v-if="i+1<items.length"/>
     </article>
@@ -121,16 +118,6 @@ defineProps({
     }
   }
 
-  .article-info {
-    display: flex;
-    flex-shrink: 0;
-
-    > span {
-      margin-inline-end: 0.5em;
-      line-height: 1.8;
-    }
-  }
-
   .excerpt {
     font-family: var(--font-noto-serif-sc);
     color: var(--c-text-quote);
@@ -153,7 +140,7 @@ defineProps({
       margin-bottom: 0.4em;
     }
 
-    p{
+    p {
       font-size: 1em;
       line-height: 1;
       margin-top: 0.4em;
@@ -166,7 +153,7 @@ defineProps({
     }
   }
 
-  hr{
+  hr {
     margin: 2rem 0;
   }
 }

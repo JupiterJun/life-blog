@@ -27,7 +27,7 @@ console.log(sidebarItems)
     <div class="theme-default-content">
       <h1>{{ data.title }}</h1>
 
-      <ArticleInfoList :author="data.frontmatter.author" :locale="data.frontmatter.location"
+      <ArticleInfoList :author="data.frontmatter.author" :location="data.frontmatter.location"
                        :date="data.frontmatter.date?data.frontmatter.date.split('T')[0]:''"/>
 
       <slot name="content-top"/>
