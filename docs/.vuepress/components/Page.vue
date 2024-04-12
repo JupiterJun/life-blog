@@ -17,7 +17,6 @@ defineSlots<{
 const data = usePageData()
 const sidebarItems = useSidebarItems()
 const themeLocale = useThemeLocaleData()
-console.log(sidebarItems)
 </script>
 
 <template>
