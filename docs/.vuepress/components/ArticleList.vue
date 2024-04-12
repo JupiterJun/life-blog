@@ -20,7 +20,7 @@ const props = defineProps({
 
 <template>
   <div class="article-wrapper">
-    <div v-if="!items.length">{{props.noItemsText}}</div>
+    <div v-if="!items.length">{{ props.noItemsText }}</div>
 
     <article
         v-for="({ info, path },i) in items"
@@ -28,15 +28,14 @@ const props = defineProps({
         class="article"
         @click="$router.push(path)"
     >
-      <div style="display: flex; align-items: center; gap: 0.4rem">
-        <header class="title">
-          {{
-            (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
-            info.title
-          }}
-        </header>
-        <Badge type="tip" text="置顶" vertical="middle" v-if="info.sticky && isMainList"/>
-      </div>
+      <header class="title">{{
+          (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
+          info.title
+        }}
+      </header>
+      <Badge type="tip" text="置顶" vertical="15%" v-if="info.sticky && isMainList"
+             style="margin-left: 0.3rem; margin-top: 0.3rem;"
+      />
 
       <ArticleTagList :tags="info.tag" style="margin: 0.6rem 0"/>
 
@@ -56,6 +55,9 @@ const props = defineProps({
 .article-wrapper {
   @include mixins.content_wrapper;
   text-align: center;
+  @media (max-width: 719px) {
+    padding: 0.5rem;
+  }
 }
 
 .article {
@@ -83,7 +85,7 @@ const props = defineProps({
 
     font-family: var(--font-noto-serif-sc);
 
-    display: inline-block;
+    display: inline;
 
     font-size: 1.28rem;
     font-weight: 500;
@@ -147,7 +149,7 @@ const props = defineProps({
 
     p {
       font-size: 1em;
-      line-height: 1;
+      line-height: 1.4;
       margin-top: 0.4em;
       margin-bottom: 0.4em;
     }
