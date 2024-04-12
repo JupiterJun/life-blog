@@ -2,6 +2,7 @@
 import PageMeta from '@theme/PageMeta.vue'
 import PageNav from '@theme/PageNav.vue'
 import SidebarItems from '@theme/SidebarItems.vue'
+import ArticleInfoList from "./ArticleInfoList.vue";
 import {usePageData} from "vuepress/client";
 import {useSidebarItems} from "@vuepress/theme-default/lib/client/composables/index.js";
 import {useThemeLocaleData} from "@vuepress/theme-default/lib/client/composables/index.js";
@@ -26,23 +27,8 @@ console.log(sidebarItems)
     <div class="theme-default-content">
       <h1>{{ data.title }}</h1>
 
-      <div class="head-info">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-          </svg>
-          <span>{{ data.frontmatter.author || '纾浚' }}&nbsp;in {{ data.frontmatter.location || 'anywhere' }}</span>
-        </div>
-        <div v-if="data.frontmatter.date">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <span>{{ data.frontmatter.date.split('T')[0] }}</span>
-        </div>
-      </div>
+      <ArticleInfoList :author="data.frontmatter.author" :locale="data.frontmatter.location"
+                       :date="data.frontmatter.date?data.frontmatter.date.split('T')[0]:''"/>
 
       <slot name="content-top"/>
 
@@ -80,7 +66,7 @@ console.log(sidebarItems)
   padding: 0 0 2rem;
 }
 
-.theme-default-content{
+.theme-default-content {
   font-family: var(--font-noto-serif-sc);;
 }
 
@@ -100,25 +86,6 @@ console.log(sidebarItems)
   }
   @media (max-width: 719px) {
     display: none;
-  }
-}
-
-.head-info {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  margin: 1rem 0;
-  font-size: 0.8rem;
-  color: var(--c-text);
-  div{
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
-  }
-  svg {
-    color: #999999;
-    width: 1rem;
-    height: 1rem;
   }
 }
 </style>
