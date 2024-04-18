@@ -9,7 +9,7 @@ const props = defineProps({
     required: true,
   },
   /** Whether is timeline or not */
-  isTimeline: Boolean,
+  isNotes: Boolean,
   isMainList: Boolean,
   noItemsText: {
     type: String,
@@ -29,7 +29,7 @@ const props = defineProps({
         @click="$router.push(path)"
     >
       <header class="title">{{
-          (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
+          (isNotes ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
           info.title
         }}
       </header>
@@ -40,6 +40,7 @@ const props = defineProps({
       <ArticleTagList :tags="info.tag" style="margin: 0.6rem 0"/>
 
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt"/>
+      <div v-if="info.content" class="excerpt" v-html="info.content"/>
 
       <ArticleInfoList :author="info.author" :location="info.location"
                        :date="new Date(info.date).toLocaleDateString()"/>

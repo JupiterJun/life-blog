@@ -7,8 +7,6 @@ import ArticleList from '../components/ArticleList.vue'
 const route = useRoute()
 const tagMap = useBlogCategory('tag')
 const page = usePageData()
-// const current = Object.values(tagMap.value.map).find(obj => obj.path === decodeURIComponent(page.value.path))
-
 </script>
 
 <template>

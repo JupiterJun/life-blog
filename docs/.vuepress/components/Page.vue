@@ -44,7 +44,7 @@ const themeLocale = useThemeLocaleData()
     <slot name="bottom"/>
   </main>
   <div class="content-toc" v-if="sidebarItems.length">
-    <!--    <p class="toc-title">{{sidebarItems[0].text}}</p>-->
+        <p class="toc-title">目录</p>
     <SidebarItems :items="sidebarItems[0].children"/>
   </div>
 </template>
@@ -54,6 +54,7 @@ const themeLocale = useThemeLocaleData()
   box-shadow: 0 10px 20px rgba(0, 0, 0, .05), 0 6px 6px rgba(0, 0, 0, .07);
   border-radius: 4px;
   width: fit-content;
+  min-width: 54vw;
   margin: calc(var(--navbar-height) + 8rem) auto 2rem;
   @media (max-width: 1300px) {
     margin: calc(var(--navbar-height) + 8rem) 4rem 2rem;
@@ -100,7 +101,7 @@ const themeLocale = useThemeLocaleData()
   ul {
     list-style-type: none;
     margin: 0;
-    padding-left: 0.4rem;
+    padding-left: 0.1rem;
   }
 
   li a {
@@ -111,11 +112,15 @@ const themeLocale = useThemeLocaleData()
     font-weight: 400;
   }
 
-  .sidebar-heading {
+  .toc-title {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0.3rem;
     padding: 0;
+  }
+
+  .sidebar-heading {
+    display: none;
   }
 
   .sidebar-item-children ul {

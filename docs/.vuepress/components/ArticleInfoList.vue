@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, withDefaults} from 'vue';
+import {withDefaults} from 'vue';
 
 const defaultAuthor = '纾浚';
 const defaultLocation = 'anywhere';
