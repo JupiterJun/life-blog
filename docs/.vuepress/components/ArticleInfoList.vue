@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {withDefaults} from 'vue';
-
 const defaultAuthor = '纾浚';
 const defaultLocation = 'anywhere';
 

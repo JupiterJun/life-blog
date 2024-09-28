@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import PageMeta from '@theme/PageMeta.vue'
-import PageNav from '@theme/PageNav.vue'
-import SidebarItems from '@theme/SidebarItems.vue'
+import PageMeta from '@theme/VPPageMeta.vue'
+import PageNav from '@theme/VPPageNav.vue'
+import SidebarItems from '@theme/VPSidebarItems.vue'
 import ArticleInfoList from "./ArticleInfoList.vue";
 import {usePageData} from "vuepress/client";
-import {useSidebarItems} from "@vuepress/theme-default/lib/client/composables/index.js";
-import {useThemeLocaleData} from "@vuepress/theme-default/lib/client/composables/index.js";
+import {useSidebarItems} from "@theme/useSidebarItems";
 
 defineSlots<{
   'top'?: (props: Record<never, never>) => any
@@ -16,7 +15,7 @@ defineSlots<{
 
 const data = usePageData()
 const sidebarItems = useSidebarItems()
-const themeLocale = useThemeLocaleData()
+console.log(sidebarItems.value)
 </script>
 
 <template>
@@ -44,7 +43,7 @@ const themeLocale = useThemeLocaleData()
     <slot name="bottom"/>
   </main>
   <div class="content-toc" v-if="sidebarItems.length">
-        <p class="toc-title">目录</p>
+    <p class="toc-title">目录</p>
     <SidebarItems :items="sidebarItems[0].children"/>
   </div>
 </template>
@@ -52,9 +51,8 @@ const themeLocale = useThemeLocaleData()
 <style scoped>
 .page {
   box-shadow: 0 10px 20px rgba(0, 0, 0, .05), 0 6px 6px rgba(0, 0, 0, .07);
-  border-radius: 4px;
-  width: fit-content;
-  min-width: 54vw;
+  border-radius: 0;
+  width: 60vw;
   margin: calc(var(--navbar-height) + 8rem) auto 2rem;
   @media (max-width: 1300px) {
     margin: calc(var(--navbar-height) + 8rem) 4rem 2rem;
@@ -67,7 +65,9 @@ const themeLocale = useThemeLocaleData()
 }
 
 .theme-default-content {
-  font-family: var(--font-noto-serif-sc);;
+  font-family: var(--font-noto-serif-sc);
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .content-toc {
@@ -82,7 +82,7 @@ const themeLocale = useThemeLocaleData()
   @media (max-width: 1100px) {
     box-shadow: -2px 6px 6px rgba(0, 0, 0, .07);
     border-bottom-left-radius: 4px;
-    background: var(--c-bg);
+    background: var(--vp-c-bg);
   }
   @media (max-width: 719px) {
     display: none;

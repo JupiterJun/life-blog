@@ -3,6 +3,7 @@ import {defaultTheme} from '@vuepress/theme-default'
 import {defineUserConfig} from 'vuepress'
 import {viteBundler} from '@vuepress/bundler-vite'
 import {searchPlugin} from '@vuepress/plugin-search'
+import * as path from "node:path";
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -19,7 +20,7 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     // logo: 'https://vuejs.press/images/hero.png',
-    sidebar: 'auto', sidebarDepth: 1, navbar: [// '/',
+    sidebarDepth: 2, navbar: [// '/',
       {
         text: '随笔', link: '/article/',
       },
@@ -33,6 +34,13 @@ export default defineUserConfig({
 
     lastUpdatedText: '最后更新', contributorsText: '贡献者',
   }),
+
+  alias: {
+    '@theme/VPPage.vue': path.resolve(
+      __dirname,
+      './components/Page.vue',
+    ),
+  },
 
   plugins: [blogPlugin({
     // Only files under posts are articles
