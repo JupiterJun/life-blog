@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<{
   align-items: center;
   margin: 1rem 0;
   font-size: 0.8rem;
-  color: var(--c-text);
+  color: var(--vp-c-text-mute);
 
   div {
     display: flex;

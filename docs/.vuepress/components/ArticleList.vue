@@ -69,7 +69,6 @@ const props = defineProps({
   width: 100%;
   margin: 0 auto 0;
   padding: 0 1.25rem;
-  color: var(--c-text);
 
   text-align: start;
 
@@ -85,11 +84,11 @@ const props = defineProps({
     position: relative;
 
     font-family: var(--font-noto-serif-sc);
+    font-weight: bold;
 
     display: inline;
 
     font-size: 1.28rem;
-    font-weight: 500;
     line-height: 2rem;
 
     transition: color 0.2s ease-in-out;
@@ -104,16 +103,16 @@ const props = defineProps({
       width: 100%;
       height: 1.5px;
 
-      background: var(--c-brand);
+      background: var(--vp-c-accent);
 
       visibility: hidden;
 
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.2s ease-in-out;
       transform: scaleX(0);
     }
 
     &:hover {
-      color: var(--c-text-accent);
+      color: var(--vp-c-accent);
 
       &::after {
         visibility: visible;
@@ -128,7 +127,7 @@ const props = defineProps({
 
   .excerpt {
     font-family: var(--font-noto-serif-sc);
-    color: var(--c-text-quote);
+    color: var(--vp-c-text-mute);
 
     h1 {
       display: none;
@@ -156,13 +155,14 @@ const props = defineProps({
     }
 
     a {
-      color: var(--c-text-quote);
-      border-bottom: 1px solid var(--c-text-quote);
+      color: var(--vp-c-text-subtle);
+      border-bottom: 1px solid var(--vp-c-text-subtle);
     }
   }
 
   hr {
     margin: 2rem 0;
+    border-color: var(--vp-c-border);
   }
 }
 </style>

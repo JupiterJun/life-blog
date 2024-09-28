@@ -19,9 +19,10 @@ const props = defineProps<{
 
 .tag {
   padding: 0.25rem 0.5rem;
+  height: 1vmax;  /* 用于解决中英文 tag 由于字体不一致导致的高度不一致问题，反正这么写是解决了，原理上我解释不通 */
   border-radius: 0.25rem;
-  border: 1px solid var(--c-brand);
-  color: var(--c-brand);
+  border: 1px solid var(--vp-c-accent);
+  color: var(--vp-c-accent);
   font-size: 0.8rem;
 }
 </style>

@@ -18,7 +18,7 @@ const page = usePageData()
               v-for="({ items, path }, name) in tagMap.map"
               :key="name"
               :to="path"
-              :active="decodeURIComponent(route.path) === path"
+              :active="route.path === path"
               class="tag"
           >
             {{ name }}
@@ -29,7 +29,7 @@ const page = usePageData()
         </div>
 
         <ArticleList
-            :items="Object.values(tagMap.map).find(obj => obj.path === decodeURIComponent(page.path))?.items ?? []"
+            :items="Object.values(tagMap.map).find(obj => obj.path === page.path)?.items ?? []"
             no-items-text="请选择一个标签"
         />
       </main>
@@ -64,8 +64,8 @@ const page = usePageData()
     padding: 0.4rem 0.8rem;
     border-radius: 0.25rem;
 
-    border: var(--c-brand) 1px solid;
-    color: var(--c-brand);
+    border: var(--vp-c-accent) 1px solid;
+    color: var(--vp-c-accent);
 
     cursor: pointer;
 
@@ -91,11 +91,11 @@ const page = usePageData()
     }
 
     &.route-link-active {
-      background: var(--c-brand);
-      color: var(--c-bg);
+      background: var(--vp-c-accent);
+      color: var(--vp-c-bg);
 
       .tag-num {
-        color: var(--c-bg);
+        color: var(--vp-c-bg);
       }
     }
   }

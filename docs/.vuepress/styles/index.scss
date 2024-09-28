@@ -7,49 +7,75 @@
 
 // colors
 :root {
-  // brand colors
-  --c-brand: hsl(47, 21%, 48%);
-  --c-brand-light: hsl(47, 26%, 57%);
+  // accent colors
+  --vp-c-accent: hsl(47, 21%, 48%);
+  --vp-c-accent-bg: hsl(47, 26%, 57%);
+  --vp-c-accent-hover: hsl(47, 26%, 65%);
+  --vp-c-accent-text: var(--vp-c-white);
+  --vp-c-accent-soft: hsl(47, 29%, 32%);
 
   // background colors
-  --c-bg: #ffffff;
-  --c-bg-light: hsl(46, 9%, 96%);
-  --c-bg-lighter: #eeeeee;
-  --c-bg-dark: #ebebec;
-  --c-bg-darker: #e6e6e6;
-  --c-bg-navbar: var(--c-bg);
-  --c-bg-sidebar: var(--c-bg);
-  --c-bg-arrow: #cccccc;
+  --vp-c-bg: #fff;
+  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-elv: #fff;
 
   // text colors
-  --c-text: hsl(47, 6%, 25%);
-  --c-text-accent: var(--c-brand);
-  --c-text-light: hsl(47, 29%, 32%);
-  --c-text-lighter: hsl(46, 29%, 40%);
-  --c-text-lightest: hsl(46, 29%, 50%);
-  --c-text-quote: hsl(0, 0%, 60%);
-}
-html.dark {
-  // brand colors
-  --c-brand: hsl(47, 26%, 57%);
-  --c-brand-light: hwb(47 38% 42%);
-
-  // background colors
-  --c-bg: hsl(50, 15%, 10%);
-  --c-bg-light: hsl(50, 15%, 20%);
-  --c-bg-lighter: hsl(47, 16%, 18%);
-  --c-bg-dark: hsl(47, 13%, 24%);
-  --c-bg-darker: hsl(47, 16%, 26%);
-
-  // text colors
-  --c-text: hsl(47, 19%, 80%);
-  --c-text-light: hsl(46, 19%, 70%);
-  --c-text-lighter: hsl(46, 19%, 66%);
-  --c-text-lightest: hsl(47, 19%, 62%);
+  --vp-c-text: hsl(47, 6%, 25%);
+  --vp-c-text-mute: #555551;
+  --vp-c-text-subtle: #777775;
 
   // border colors
-  --c-border: hsl(47, 18%, 30%);
-  --c-border-dark: hsl(47, 19%, 25%);
+  --vp-c-gutter: #e2e2e3;
+  --vp-c-border: #c2c2c4;
+  --vp-c-border-hard: #b8b8ba;
+
+  // shadow colors
+  --vp-c-shadow: rgb(0 0 0 / 15%);
+
+  // control colors
+  --vp-c-control: rgb(142 150 170 / 10%);
+  --vp-c-control-hover: rgb(142 150 170 / 16%);
+  --vp-c-control-disabled: #eaeaea;
+
+  // layout colors
+  --vp-navbar-c-bg: var(--vp-c-bg);
+  --vp-sidebar-c-bg: var(--vp-c-bg);
+
+  // code group colors
+  --vp-c-code-tab-title: var(--code-c-text, rgb(255 255 255 / 90%));
+  --vp-c-code-tab-bg: var(--code-bg-color, var(--code-c-bg));
+  --vp-c-code-tab-active: var(--vp-c-accent);
+}
+
+[data-theme='dark'] {
+  // brand colors
+  --vp-c-accent: hsl(47, 26%, 57%);
+  --vp-c-accent-bg: hsl(47, 26%, 42%);
+  --vp-c-accent-hover: hsl(47, 26%, 30%);
+  --vp-c-accent-soft: hsl(47, 26%, 30%, 16%);
+
+  // background colors
+  --vp-c-bg: hsl(50, 15%, 10%);
+  --vp-c-bg-alt: hsl(50, 15%, 13%);
+  --vp-c-bg-elv: hsl(47, 16%, 18%);
+
+  // text colors
+  --vp-c-text: hsl(47, 19%, 85%);
+  --vp-c-text-mute: #aaaaa8;
+  --vp-c-text-subtle: #888884;
+
+  // border colors
+  --vp-c-gutter: #000;
+  --vp-c-border: hsl(47, 18%, 30%);
+  --vp-c-border-hard: hsl(47, 19%, 25%);
+
+  // shadow color
+  --vp-c-shadow: rgb(0 0 0 / 30%);
+
+  // control colors
+  --vp-c-control: rgb(101 117 133 / 12%);
+  --vp-c-control-hover: rgb(101 117 133 / 18%);
+  --vp-c-control-disabled: #363636;
 }
 
 // navbar
@@ -66,12 +92,12 @@ html.dark {
   --navbar-padding-h: 2rem;
 }
 
-.navbar {
+.vp-navbar {
   border: none;
   box-shadow: 0 5px 20px rgba(0, 0, 0, .03), 0 6px 6px rgba(0, 0, 0, .05);
   font-family: 'Noto Serif SC', serif;
 
-  .site-name {
+  .vp-site-name {
     font-size: 2rem;
     @media (max-width: 720px) {
       font-size: 1.4rem;
@@ -80,15 +106,15 @@ html.dark {
     letter-spacing: 2px;
   }
 
-  .navbar-items {
+  .vp-navbar-items {
     font-size: 20px;
     .route-link-active {
-      color: var(--c-brand);
+      color: var(--vp-c-accent);
     }
   }
 }
 
-.toggle-sidebar-button {
+.vp-toggle-sidebar-button {
   top: var(--navbar-padding-v);
 }
 
@@ -123,16 +149,31 @@ html.dark {
 
 // sidebar
 @media (min-width: 720px) {
-  .sidebar {
+  .vp-sidebar {
     display: none;
   }
 }
 
-// badage
+// badge
 :root{
-  --c-badge-tip: var(--c-brand);
-  --c-badge-warning: #ecc808;
-  --c-badge-warning-text: var(--c-bg);
-  --c-badge-danger: #dc2626;
-  --c-badge-danger-text: var(--c-bg);
+  --badge-c-tip-text: var(--vp-c-bg);
+  --badge-c-tip-bg: var(--vp-c-accent);
+  --badge-c-warning-text: var(--vp-c-yellow-text);
+  --badge-c-warning-bg: var(--vp-c-yellow-soft);
+  --badge-c-danger-text: var(--vp-c-red-text);
+  --badge-c-danger-bg: var(--vp-c-red-soft);
+  --badge-c-important-text: var(--vp-c-purple-text);
+  --badge-c-important-bg: var(--vp-c-purple-soft);
+  --badge-c-info-text: var(--vp-c-indigo-text);
+  --badge-c-info-bg: var(--vp-c-indigo-soft);
+  --badge-c-note-text: var(--vp-c-grey-text);
+  --badge-c-note-bg: var(--vp-c-grey-soft);
+}
+.vp-badge {
+  font-weight: 600 !important;
+}
+
+// page
+.page {
+  padding-top: var(--navbar-height);
 }
